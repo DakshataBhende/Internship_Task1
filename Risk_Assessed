@@ -1,0 +1,23 @@
+# 135/tcp – Microsoft RPC (Remote Procedure Call)
+-Risk: This port is used for Microsoft's DCOM and RPC services. It is frequently targeted by worms and malware (e.g., Blaster, Sasser).
+-Exploitation Potential: Remote code execution vulnerabilities.
+                        Used as an entry point to enumerate services and launch attacks.
+-Recommendation: Block this port externally; allow only if necessary within a secure internal network.
+
+# 139/tcp – NetBIOS Session Service
+-Risk: NetBIOS is used for Windows file and printer sharing over older protocols. It is vulnerable to:
+-Information disclosure (e.g., usernames, shares).
+-Pass-the-hash attacks and man-in-the-middle (MitM) via SMB.
+-Recommendation: Disable if not needed. Never expose to the internet.
+
+# 445/tcp – Microsoft-DS (Direct SMB over TCP)
+-Risk: This port is used for SMB (Server Message Block) – modern file and printer sharing in Windows.
+-Common Exploits: EternalBlue (used in WannaCry, NotPetya).
+                  Ransomware and wormable SMB attacks.
+-Recommendation: Critical to block on public interfaces. Allow only inside secure, segmented networks.
+
+# 7070/tcp – RealServer (RealAudio/RealVideo Streaming)
+-Risk: Less common today, but when used:
+-May expose outdated streaming services.
+-Could allow remote exploitation if running unpatched versions.
+
